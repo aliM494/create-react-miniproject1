@@ -3,8 +3,20 @@ import { taskContext } from "./taskContext";
 import TaskItems from "./TaskItems";
 import TopForm from "./TopForm";
 
+function readData() {
+  let request = new XMLHttpRequest();
+
+  request.open("GET", "data.json");
+
+  request.responseType = "json";
+
+  request.send();
+
+  console.log(request);
+}
+
 const App = () => {
-  const [taskItems, settaskItems] = useState([
+  const [taskItems, setTaskItems] = useState([
     {
       id: 1,
       title: "کار شماره 1",
@@ -29,7 +41,7 @@ const App = () => {
           <taskContext.Provider
             value={{
               taskItems,
-              settaskItems,
+              setTaskItems,
             }}
           >
             <TopForm />
